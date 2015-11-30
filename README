@@ -1,0 +1,7 @@
+Date: 11-26-2015
+Author: Shawn McCombs
+Name: InternetScavenger
+Python
+
+Description:
+I used my port scanning program to loop through the internet and find all webservers. Resolve their hostnames and log them in a csv file. Multi threading is used. All settings must be edited in the script.
