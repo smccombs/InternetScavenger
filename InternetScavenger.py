@@ -24,8 +24,10 @@ def main(tid, increment):
 		
 		if host4 >= 256:
 			TotalCounter1 = TotalCounter1 + Counter
+			'''
 			print ''
 			print str(TotalCounter2) + ' : ' + str(Counter) + ' : ' + str(TotalCounter1)
+			'''
 			Counter = 0
 			host4 = host4 - 255
 			host3 += 1
@@ -61,7 +63,7 @@ def main(tid, increment):
 	return
 	
 threads = []
-increment = 4
+increment = 255
 for i in range(increment):
     t = threading.Thread(target=main, args=(i,increment))
     threads.append(t)
