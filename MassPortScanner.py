@@ -3,7 +3,7 @@ import threading
 import sys
 import time
 
-Logs = open("log.csv","w")
+Logs = open("MassPortScanner-Log.csv","w")
 
 def main(tid, increment):
 
@@ -13,22 +13,11 @@ def main(tid, increment):
 	host4 = 0 + tid
 
 	port = 80
-	Counter = 0
-	TotalCounter1 = 0
-	TotalCounter2 = 0
 	
 	while 1 == 1:
-		TotalCounter2 += 1
 		host4 += increment
-		sys.stdout.write('.')
 		
 		if host4 >= 256:
-			TotalCounter1 = TotalCounter1 + Counter
-			'''
-			print ''
-			print str(TotalCounter2) + ' : ' + str(Counter) + ' : ' + str(TotalCounter1)
-			'''
-			Counter = 0
 			host4 = host4 - 255
 			host3 += 1
 			if host3 >= 256:
@@ -44,7 +33,6 @@ def main(tid, increment):
 		host = str(host1)+'.'+str(host2)+'.'+str(host3)+'.'+str(host4)
 		
 		socket.gethostbyname(host)
-		'''socket.setdefaulttimeout(0.04)'''
 		socket.setdefaulttimeout(1)
 		connectionsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		
@@ -55,11 +43,8 @@ def main(tid, increment):
 			connectionsocket.close()
 			sys.stdout.write('X')
 			Logs.write(reply + "\r")
-			Counter += 1
 		except:
-			reply = "--" + str(socket.gethostbyname(host))
-		
-		'''print reply'''
+			sys.stdout.write('.')
 	return
 	
 threads = []

@@ -1,0 +1,34 @@
+IP Address = w.x.y.z
+IP Number = 16777216*w + 65536*x + 256*y + z 
+
+
+To reverse IP number to IP address,
+w = w / 16777216 % 256
+x = x / 65536 % 256
+y = y / 256 % 256
+z = x % 256
+
+
+For example, IP Address "72.77.138.60" is "1213041212" in IP Number. It matched the following recordset in the database.
+"1213041208","1213041215","US","UNITED STATES"
+
+
+function Dot2LongIP ($IPaddr)
+{
+    if ($IPaddr == "") {
+        return 0;
+    } else {
+        $ips = split ("\.", "$IPaddr");
+        return ($ips[3] + $ips[2] * 256 + $ips[1] * 256 * 256 + $ips[0] * 256 * 256 * 256);
+    }
+}
+
+
+SELECT [COUNTRY NAME COLUMN], [REGION NAME COLUMN], [CITY NAME COLUMN], [LATITUDE COLUMN], [LONGITUDE COLUMN], [ZIP CODE COLUMN], [TIME ZONE COLUMN], [ISP COLUMN], [DOMAIN NAME COLUMN], [NETSPEED COLUMN], [IDD CODE COLUMN], [AREA CODE COLUMN], [WEATHER STATION CODE COLUMN], [WEATHER STATION NAME COLUMN], [MCC COLUMN], [MNC COLUMN], [BRAND NAME COLUMN]
+FROM [IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE-TIMEZONE-ISP-DOMAIN-NETSPEED-AREACODE-WEATHER-MOBILE TABLE]
+WHERE ([IP FROM COLUMN] <= [SEARCH IP NO]) AND ([IP TO COLUMN] >= [SEARCH IP NO])
+
+
+<?
+    $ipaddress = getenv(REMOTE_ADDR);
+?>

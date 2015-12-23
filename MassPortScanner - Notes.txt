@@ -1,0 +1,18 @@
+Total addresses to scan
+4,228,250,625
+
+How many secs
+/255
+16,581,375
+
+How many Mins
+/60
+276,356
+
+How many Hours
+/60
+4,605
+
+How many Days
+/24
+192
